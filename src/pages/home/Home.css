@@ -1,0 +1,75 @@
+.home-page{
+    height: 100vh;
+    background-color: #2ea1f2;
+}
+
+.title-body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.texto-home{
+    color: white;
+    font-size: 30px;
+    text-align: center;
+}
+
+.text1{
+    font-size: 22px;
+    font-weight:bolder;
+}
+.text2{
+    font-size: 26px;
+    font-weight: bolder;
+}
+
+.text3{
+    font-size: 25px;
+    font-weight:bolder
+}
+
+@media (min-width: 400px){
+    .title-body{
+        width: 800px;
+        display: block;
+        margin: 0px auto;
+    }
+
+    .text1{
+        font-size: 42px;
+    }
+    .text2{
+        font-size: 57px;
+    }
+    
+    .text3{
+        font-size: 45px;
+    }
+}
+
+.text-red{
+    color: rgb(233 32 32);
+    font-weight: bold;
+}
+
+.scroll{
+  display: block;
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+
+.elementos-container{
+    width: 100vw;
+    height: auto;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+@media (min-width: 400px){
+    .elementos-container{
+        display: flex;
+        justify-content: center;
+    }
+}
