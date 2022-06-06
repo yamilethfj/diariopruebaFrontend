@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState} from 'react'
 import axios from 'axios'
 
 //Css
@@ -33,17 +33,34 @@ const Home = () => {
     const [email, setEmail] = useState("");
 
     const submitForm = () =>{
-        //https://us-central1-pruebadiario-bab0e.cloudfunctions.net/diario
-        //http://localhost:5000/pruebadiario-bab0e/us-central1/diario/formulario?nombre=${nombre}&telefono=${telefono}&email=${email}
-        //http://localhost:5000/pruebadiario-bab0e/us-central1/diario/formulario
-        axios
-        .post(`https://us-central1-pruebadiario-bab0e.cloudfunctions.net/diario/formulario`, { nombre: nombre, telefono: telefono, email: email })
-        .then((response) => {
-            alert("Datos Guardados");
-        })
-        .catch((error) => {
-            console.error(error);
-        })
+        //https://us-central1-pruebadiario-bab0e.cloudfunctions.net/diario // nube
+        //http://localhost:5000/pruebadiario-bab0e/us-central1/diario/formulario?nombre=${nombre}&telefono=${telefono}&email=${email} //local get
+        //http://localhost:5000/pruebadiario-bab0e/us-central1/diario/formulario //local post
+        var emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+        if(nombre.length < 10  ){
+             alert("longuitud de nombre incorrecta");
+        }
+
+        if(telefono.length !== 8){
+            alert("longuitud de numero de telefono incorrecta");
+        }
+        console.log(emailRegex.test(email));
+        if(email.length <=  0 || !emailRegex.test(email)){
+            alert("Email incorrecto");
+        }
+
+        if(emailRegex.test(email) && telefono.length === 8 && nombre.length > 10 ){
+            axios
+                .post(`http://localhost:5000/pruebadiario-bab0e/us-central1/diario/formulario`, { nombre: nombre, telefono: telefono, email: email })
+                .then((response) => {
+                    alert("Datos Guardados");
+                })
+                .catch((error) => {
+                    console.error(error);
+                })
+        }
+        
+        
     }
     
      return (
